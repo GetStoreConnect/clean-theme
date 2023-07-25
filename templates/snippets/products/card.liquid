@@ -1,0 +1,162 @@
+{%- if current_product %}
+  <div class="SC-ProductCard" id="product_{{ product.id }}">
+  </div>
+{%- else %}
+  {%- default product: blank -%}
+  {%- default show_compare: false -%}
+
+  <div class="SC-ProductCard" id="product_{{ product.id }}">
+    {%- comment %} Image {% endcomment %}
+    <a class="SC-ProductCard_image sc-height-100" href="{{ product.path }}">
+      {%- if product.image != blank %}
+        <img class="sc-height-100" loading="lazy" src="{{ product.image.large_url }}"/>
+      {%- else %}
+        {% render "shared/placeholder_image" %}
+      {%- endif %}
+    </a>
+
+    {%- comment %} Tags {% endcomment %}
+    {%- if product.tags.size > 0 %}
+      <div class="SC-ProductCard_tags">
+        {%- assign tags = product.tags %}
+        {% for tag in tags %}
+          <span class="SC-ProductCard_tag SC-ProductCard_tag-{{ tag.value | parameterize }}">
+            {{ tag.value }}
+          </span>
+        {% endfor %}
+      </div>
+    {%- endif %}
+
+    {%- comment %} Headline {% endcomment %}
+    <a class="SC-ProductCard_headline" href="{{ product.path }}">{{ product.name | truncate: 70 }}</a>
+
+    {%- comment %} Detail {% endcomment %}
+    <div class="SC-ProductCard_subheadline">
+
+      {%- comment %} Price {% endcomment %}
+      <div class="SC-ProductCard_price">
+        {%- if product.pricing.hide_price? %}
+          <span class="SC-ProductCard_price_item">
+            {{ product.pricing.hide_price_text }}
+          </span>
+        {%- elsif product.restricted? and product.restricted_text != blank %}
+          <span class="SC-ProductCard_price_item">
+            {{ product.restricted_text }}
+          </span>
+        {%- elsif product.pricing.has_price? %}
+          {%- if product.pricing.on_sale? %}
+            <span class="SC-ProductCard_price_item is-sale">
+              {%- if product.pricing.sale_price == 0 %}
+                {{ "pricing.free" | t }}
+              {%- else %}
+                {%- capture price %}{{ product.pricing.sale_price | money }}{%- endcapture %}
+                {% if product.pricing.variable_pricing? %}
+                  {{ "pricing.variable" | t: price: price }}
+                {%- else %}
+                  {{ price }}
+                {% endif %}
+              {%- endif %}
+            </span>
+            <span class="SC-ProductCard_price_item is-original">
+              {{ product.pricing.original_price | money }}
+            </span>
+          {%- else %}
+            <span class="SC-ProductCard_price_item">
+              {%- if product.pricing.price == 0 %}
+                {{ "pricing.free" | t }}
+              {%- else %}
+                {%- capture price %}{{ product.pricing.price | money }}{%- endcapture %}
+                {% if product.pricing.variable_pricing? %}
+                  {{ "pricing.variable" | t: price: price }}
+                {%- else %}
+                  {{ price }}
+                {% endif %}
+              {%- endif %}
+            </span>
+          {%- endif %}
+        {%- endif %}
+
+        {%- comment %} Subscriptions {% endcomment %}
+        {%- if product.subscription? %}
+          {%- capture timespan %}
+            {%- liquid
+              assign term = product.pricing.subscription_term | number, compact: true
+              assign unit = product.pricing.subscription_term_unit
+
+              if term != blank and unit != blank
+                render "shared/subscriptions/term_unit", unit: unit, number: term
+              endif
+            %}
+          {%- endcapture %}
+          <span class="SC-ProductCard_subscription">
+            {{ "pricing.subscription_timespan" | t: timespan: timespan }}
+          </span>
+        {%- endif %}
+      </div>
+
+      {%- comment %} Restrictions {% endcomment %}
+      {%- if product.restricted? %}
+        <div class="SC-ProductCard_restricted sc-mb-small">
+          {% render "products/restricted", product: product, compact: true %}
+        </div>
+      {%- endif %}
+
+      {%- comment %} Fulfilment {% endcomment %}
+      {%- unless product.restricted? and product.current_approved_quantity <= 0 %}
+        <div class="SC-ProductCard_fulfilment">
+          {%- if product.can_purchase? %}
+            {%- if product.can_pickup? %}
+                {%- if product.can_ship? %}
+                  {{ "products.pickup.available" | t }}
+                {%- else %}
+                  {{ "products.pickup.only" | t }}
+                {%- endif %}
+            {%- endif %}
+          {%- else %}
+            {%- if product.bookable? %}
+              {{ "products.availability.sold_out" | t }}
+            {%- elsif product.track_inventory? %}
+              {{ product.out_of_stock_text }}
+            {%- else %}
+              {{ product.unavailable_text }}
+            {%- endif %}
+          {%- endif %}
+        </div>
+      {%- endunless %}
+
+      {% comment %} Colour Variants {% endcomment %}
+      {%- if product.variant_types %}
+        <div class="SC-ProductCard_variants_colours sc-flex sc-gap-small">
+          {% assign colours = product.variant_types | where: "name", "colour" %}
+          {%- for colour in colours %}
+            {%- for single_colour in colour.variant_choices %}
+              <span id="{{ single_colour.name }}" class="SC-Colour" style="background-color: #{{ single_colour.name }}c"></span>
+            {%- endfor %}
+          {%- endfor %}
+        </div>
+      {%- endif %}
+
+    </div>
+
+    {%- comment %} Actions {% endcomment %}
+    <div class="SC-ProductCard_actions">
+      {% if product.can_purchase? and product.current_approved_quantity > 0 %}
+        {%- comment %} Buy now {% endcomment %}
+        {%- unless theme_variables["products.card.hide_purchase_button"] == true %}
+          {%- render "products/card/buttons", product: product %}
+        {%- endunless %}
+      {% endif %}
+      {%- comment %} Compare {% endcomment %}
+      {%- if show_compare %}
+        <div class="sc-me-tiny">
+          <label class="SC-Checkbox">
+            <input data-js-compare-add id="{{ product.id }}" class="SC-Checkbox_input" type="checkbox"/>
+            <div class="SC-Checkbox_label">
+              {{ "products.compare.add_to_compare" | t }}
+            </div>
+          </label>
+        </div>
+      {%- endif %}
+    </div>
+  </div>
+{%- endif %}

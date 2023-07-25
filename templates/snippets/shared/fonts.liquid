@@ -1,0 +1,43 @@
+{% assign jost_font_url = "https://fonts.googleapis.com/css2?family=Inter:wght@200;400&family=Jost:wght@200;400&display=swap"%}
+{% assign inter_font_url = "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600;700&display=swap" %}
+{% assign relaway_font_url = "https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400;1,600&display=swap" %}
+{% assign cormorant_font_url = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" %}
+
+{%- comment %} Base font {% endcomment %}
+<link rel="preload" as="style" href="{{ jost_font_url }}">
+<link rel="stylesheet" href="{{ jost_font_url }}" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="{{ jost_font_url }}">
+</noscript>
+
+{%- comment %} Secondary font {% endcomment %}
+
+<link rel="preload" as="style" href="{{ cormorant_font_url }}">
+<link rel="stylesheet" href="{{ cormorant_font_url }}" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="{{ cormorant_font_url }}">
+</noscript>
+
+<style>
+:root {
+  --sc-font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h2, h3, h4, h5 {
+  font-family: 'Cormorant Garamond', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Only if base font is 'Jost', you should comment this out if you are using another font */
+
+:root {
+  --sc-font-tiny: 15px;
+  --sc-font-small: 16px;
+  --sc-font-base: 18px;
+  --sc-font-medium: 20px;
+  --sc-font-large: 24px;
+  --sc-font-xlarge: 26px;
+  --sc-font-xxlarge: 32px;
+  --sc-font-huge: 37px;
+  --sc-font-gigantic: 47px;
+}
+</style>
