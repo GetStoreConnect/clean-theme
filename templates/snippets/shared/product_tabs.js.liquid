@@ -1,0 +1,238 @@
+{%- if current_product %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Removes accordion sections from product description
+    const DOMCleanup = document.querySelectorAll('#SC-products-show .SC-ProductDisplay_details [data-accordion]');
+    DOMCleanup.forEach(item => item.remove());
+
+    // Attach 3 new sections
+    const variantViews = document.querySelectorAll('[data-variant-id] div.sc-mb-spacious');
+
+    // Global variables
+    let informationSections = [];
+    let tabID = 0;
+
+    // Global Generators
+    const createBtnSection = () => {
+      const btnsContainer = document.createElement('div');
+      btnsContainer.classList.add('sc-flex', 'sc-align-item-start', 'sc-gap-tiny');
+      return btnsContainer;
+    }
+    // Global existing labels
+    const tabLabels = [
+      {
+        title: "{{ current_product.features_label | j }}",
+        content: "{{ current_product.features_content | j }}",
+      },
+      {
+        title: "{{ current_product.specifications_label | j }}",
+        content: "{{ current_product.specifications_content | j }}",
+      },
+      {
+        title: "{{ current_product.downloads_label | j }}",
+        content: "{{ current_product.downloads_content | j }}",
+      },
+      {
+        title: "{{ current_product.support_label | j }}",
+        content: "{{ current_product.support_content | j }}",
+      },
+      {
+        title: "{{ current_product.warranty_label | j }}",
+        content: "{{ current_product.warranty_content | j }}",
+      },
+    ];
+
+    // Default labels to fill up when there's a variant pages reload or landing
+    const defaultStoreLabels = [
+      {
+        title: "{{ current_product.features_label | j }}",
+        content: "{{ current_product.features_content | j }}",
+      },
+      {
+        title: "{{ current_product.specifications_label | j }}",
+        content: "{{ current_product.specifications_content | j }}",
+      },
+    ];
+
+    const btnGenerator = (tabLabels) => {
+      // It prints existing content labels only by filtering the TabLabel Object
+      let initTabLabels = tabLabels.filter((existingLabel) => existingLabel.title && existingLabel.content.trim() !== '');
+      let btns = [];
+      let i = 0;
+      // Generates single buttons
+      if (initTabLabels.length > 0) {
+        initTabLabels.forEach((label) => {
+          const btn = document.createElement('button');
+          btn.classList.add('sc-tab_button', 'sc-pos-relative', 'sc-border', 'sc-border-bottom-none');
+          btn.type = "button";
+          btn.textContent = label.title;
+          btn.setAttribute('data-tab-trigger', label.title);
+          btn.setAttribute('id', label.title);
+          btns.push(btn);
+        });
+      } else {
+        defaultStoreLabels.forEach((label) => {
+          const defaultBtn = document.createElement('button');
+          defaultBtn.classList.add('sc-tab_button', 'sc-pos-relative', 'sc-border', 'sc-border-bottom-none');
+          defaultBtn.type = "button";
+          defaultBtn.textContent = label.title;
+          defaultBtn.setAttribute('data-tab-trigger', label.title);
+          defaultBtn.setAttribute('id', label.title);
+          btns.push(defaultBtn);
+        });
+      }
+      return btns;
+    }
+
+    const removeDuplicatedItems = () => {
+      const duplicatedHeadings = document.querySelectorAll('h4');
+      duplicatedHeadings.forEach(heading => heading.remove());
+    }
+
+    // init and trigger sections
+    if(variantViews.length > 0) {
+      [...variantViews].forEach((view) => {
+
+        view.classList.add('SC-ProductInformation', 'SC-Tabs', 'sc-border-radius');
+        view.setAttribute('data-tabs', `SC-ProductTab-${tabID + 1}`);
+        tabID++;
+
+        const viewSections = [
+          {
+            title: "{{ current_product.downloads_label | j }}",
+            content: "{{ current_product.downloads_content | j }}",
+          },
+          {
+            title: "{{ current_product.support_label | j }}",
+            content: "{{ current_product.support_content | j }}",
+          },
+          {
+            title: "{{ current_product.warranty_label | j }}",
+            content: "{{ current_product.warranty_content | j }}",
+          },
+        ];
+
+        let initViewSections = viewSections.filter((singleSection) => singleSection.title && singleSection.content.trim() !== '');
+
+        if (initViewSections.length > 0) {
+
+          initViewSections.forEach((section) => {
+            const viewParent = document.createElement('section');
+            const viewTitle = document.createElement('h4');
+            const viewContent = document.createElement('div');
+
+            viewTitle.textContent = section.title;
+            viewContent.innerHTML = section.content;
+
+            viewParent.appendChild(viewTitle);
+            viewParent.appendChild(viewContent);
+            view.appendChild(viewParent);
+          });
+        } else {
+          const defaultProductInformation = document.querySelectorAll('[data-variant-id] div.sc-mb-spacious');
+          let defaultProductInformationSections = Array.from(defaultProductInformation).flatMap(section => [...section.children]);
+          let defaultFilteredSections = Array.from(defaultProductInformationSections).filter(section => section.tagName === 'SECTION');
+
+          defaultFilteredSections.forEach((section, index) => {
+            const updatedFilteredLabels = defaultStoreLabels[index % defaultStoreLabels.length];
+            if (updatedFilteredLabels) {
+              const { title } = updatedFilteredLabels;
+              section.classList.remove('sc-mb-spacious');
+              section.classList.add('SC-TabPanel_body', 'sc-border', 'sc-p-base', 'sc-hide', 'sc-shadow');
+              section.setAttribute('id', title);
+              section.setAttribute('data-tab', title);
+              removeDuplicatedItems();
+            }
+          });
+        }
+
+        // insert button sections for each variant view
+        let newBtnSection = createBtnSection();
+        buttons = btnGenerator(tabLabels);
+        buttons.forEach((button) => {
+          newBtnSection.appendChild(button);
+        });
+
+        view.insertAdjacentElement('afterbegin', newBtnSection);
+
+        let updatedViewSections = document.querySelectorAll('[data-variant-id] div.sc-mb-spacious');
+        let childrenSections = Array.from(updatedViewSections).flatMap(section => [...section.children]);
+
+        let filteredSections = Array.from(childrenSections).filter(section => section.tagName === 'SECTION');
+        let updatedViewLabels = tabLabels.filter((updatedLabel) => updatedLabel.title && updatedLabel.content.trim() !== '');
+        filteredSections.forEach((section, index) => {
+          const updatedViewLabel = updatedViewLabels[index % updatedViewLabels.length];
+          if (updatedViewLabel) {
+            const { title } = updatedViewLabel;
+            section.classList.remove('sc-mb-spacious');
+            section.classList.add('SC-TabPanel_body', 'sc-border', 'sc-p-base', 'sc-hide', 'sc-shadow');
+            section.setAttribute('id', title);
+            section.setAttribute('data-tab', title);
+            removeDuplicatedItems();
+          }
+        });
+      });
+    } else {
+      const newSections = document.querySelector('div.sc-mb-spacious');
+      newSections.classList.add('SC-ProductInformation', 'SC-Tabs', 'sc-border-radius');
+      newSections.setAttribute('data-tabs', 'SC-ProductTab-{{ current_product.identifier }}');
+
+      // insert button sections
+      const newSingleBtnSection = createBtnSection();
+      newSections.insertAdjacentElement('afterbegin', newSingleBtnSection);
+
+      newButtons = btnGenerator(tabLabels);
+      newButtons.forEach((button) => {
+        newSingleBtnSection.appendChild(button);
+      });
+
+      const sections = [
+        {
+          title: "{{ current_product.downloads_label | j }}",
+          content: "{{ current_product.downloads_content | j }}",
+        },
+        {
+          title: "{{ current_product.support_label | j }}",
+          content: "{{ current_product.support_content | j }}",
+        },
+        {
+          title: "{{ current_product.warranty_label | j }}",
+          content: "{{ current_product.warranty_content | j }}",
+        },
+      ];
+
+      let initSections = sections.filter((section) => section.title && section.content.trim() !== '');
+
+      if (initSections.length > 0) {
+        initSections.forEach((section) => {
+          const parent = document.createElement('section');
+          const title = document.createElement('h4');
+          const content = document.createElement('div');
+
+          title.textContent = section.title;
+          content.innerHTML = section.content;
+
+          parent.appendChild(title);
+          parent.appendChild(content);
+          newSections.appendChild(parent);
+        });
+      }
+
+      let updatedSections = [...newSections.children];
+      let filteredSections = Array.from(updatedSections).filter(section => section.tagName === 'SECTION');
+      let updatedLabels = tabLabels.filter((updatedLabel) => updatedLabel.title && updatedLabel.content.trim() !== '');
+
+      filteredSections.forEach((section, index) => {
+        section.classList.add('SC-TabPanel_body', 'sc-border', 'sc-p-base', 'sc-hide', 'sc-shadow');
+        if (updatedLabels[index]) {
+          const { title } = updatedLabels[index];
+          section.setAttribute('data-tab', title);
+          section.setAttribute('id', title);
+          removeDuplicatedItems();
+        }
+      });
+    }
+  });
+</script>
+{%- endif %}

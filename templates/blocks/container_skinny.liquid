@@ -1,0 +1,36 @@
+{%- comment %}
+  key: container_skinny
+{%- endcomment %}
+
+<section
+  class="SC-ContentBlockContainer"
+  id="{% if content_block.identifier != blank %}SC-ContentBlockContainer-{{ content_block.identifier }}{% endif %}"
+  data-cb="{{ content_block.identifier }}">
+
+  {%- if content_block.title != blank or content_block.subtitle != blank %}
+    <header class="sc-container sc-container-skinny sc-mb-base sc-p-none">
+      {%- if content_block.title != blank %}
+        <h2>{{ content_block.title }}</h2>
+      {%- endif %}
+      {%- if content_block.subtitle != blank %}
+        <div class="sc-font-medium sc-shade-neutral">
+          {{ content_block.subtitle }}
+        </div>
+      {%- endif %}
+    </header>
+  {%- endif %}
+
+  <div class="sc-container sc-container-skinny sc-p-none">
+    {%- for child in content_block.children %}
+      {{ child.render }}
+    {%- endfor %}
+  </div>
+
+  {%- if content_block.link_label != blank and content_block.link_target != blank %}
+    <footer class="sc-container sc-container-skinny sc-mt-xlarge sc-p-none">
+      <a class="SC-Button SC-Button-primary" href="{{ content_block.link_target }}">
+        {{ content_block.link_label | escape }}
+      </a>
+    </footer>
+  {%- endif %}
+</section>

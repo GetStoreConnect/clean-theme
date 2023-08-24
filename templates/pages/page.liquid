@@ -1,0 +1,15 @@
+{%- if current_page.social_image != blank %}
+  {%- capture background_image %}{{ current_page.social_image.url }}{%- endcapture %}
+  {%- assign modifier = "SC-PageBanner sc-p-large"%}
+{%- else %}
+  {%- assign modifier = "sc-ps-medium sc-md:ps-large sc-mt-small sc-md:mt-base" %}
+{%- endif %}
+
+<article id="SC-page-{{ current_page.identifier }}">
+  <section style="background-image: url('{{ background_image }}');" class="{{ modifier }}">
+    {%- render "shared/page_header", heading: current_page.title, sub_heading: current_page.subtitle %}
+  </section>
+  <section class="sc-container sc-ps-spacious">
+    {{ current_page.body_content }}
+  </section>
+</article>

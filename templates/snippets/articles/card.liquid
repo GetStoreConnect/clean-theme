@@ -1,0 +1,28 @@
+<div class="SC-CardGrid_item">
+  <div class="SC-ArticleCard">
+    {%- if article.hero_image %}
+      <a class="SC-ArticleCard_image" href="{{ article.path }}">
+        <img src="{{ article.hero_image.large_url }}" loading="lazy"/>
+      </a>
+    {%- else %}
+      <a class="SC-ArticleCard_image" href="{{ article.path }}">
+        {% render "shared/placeholder_image" %}
+      </a>
+    {%- endif %}
+    <a href="{{ article.path }}" class="SC-ArticleCard_heading">
+      <h3 class="sc-font-bold">{{ article.title }}</h3>
+    </a>
+    <div class="SC-ArticleCard_author sc-mb-medium">
+      <p><span>{{ "Post by "}}</span>{{ article.author }}</p>
+    </div>
+    <div class="SC-ArticleCard_summary">
+      {% assign summary = article.summary_content | strip_html %}
+      {{ summary | truncate: 220 }}
+    </div>
+    <div class="SC-ArticleCard_action sc-mt-base sc-flex">
+      <a href="{{ article.path }}" class="sc-font-bold">
+        {{ "Read more" }}
+      </a>
+    </div>
+  </div>
+</div>

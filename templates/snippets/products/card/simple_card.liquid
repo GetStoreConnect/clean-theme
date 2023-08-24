@@ -1,0 +1,102 @@
+{%- default product: blank -%}
+{%- default show_compare: false -%}
+
+<div class="sc-pos-relative" id="product_{{ product.id }}">
+  <a href="{{ product.path }}" class="sc-flex-col sc-card">
+
+    {%- comment %} Image {% endcomment %}
+    <div class="sc-pos-relative sc-display-block sc-width-expand sc-card_image">
+    {%- if product.image != blank %}
+      <img loading="lazy" src="{{ product.image.medium_url }}"/>
+    {%- else %}
+      {% render "shared/placeholder_image" %}
+    {%- endif %}
+    </div>
+
+
+    {%- comment %} Tags {% endcomment %}
+    {%- if product.tags.size > 0 %}
+    <div class="SC-ProductCard_tags">
+      {%- assign tags = product.tags %}
+      {% for tag in tags %}
+       <span class="SC-ProductCard_tag SC-ProductCard_tag-{{ tag.value | parameterize }}">
+         {{ tag.value }}
+       </span>
+     {% endfor %}
+    </div>
+    {%- endif %}
+
+    <div class="sc-flex-col sc-mt-base sc-gap-small sc-ps-small sc-pb-small">
+      {%- comment %} Headlines {% endcomment %}
+      <div class="sc-three-quarters">
+        <h3 class="sc-font-base sc-m-none">{{ product.name }}</h3>
+      </div>
+      {%- comment %} Price {% endcomment %}
+      <div class="SC-ProductCard_price sc-flex sc-align-items-center sc-gap-tiny">
+        {%- if product.pricing.hide_price? %}
+          <span class="sc-font-bold sc-font-base">
+            {{ product.pricing.hide_price_text }}
+          </span>
+          <br>
+        {%- elsif product.restricted? and product.restricted_text != blank %}
+          <span class="sc-font-bold sc-font-base">
+            {{ product.restricted_text }}
+          </span>
+          <br>
+        {%- elsif product.pricing.has_price? %}
+          {%- if product.pricing.on_sale? %}
+            <span class="sc-font-bold sc-font-base sc-color-sale is-sale">
+              {%- if product.pricing.sale_price == 0 %}
+                {{ "pricing.free" | t }}
+              {%- else %}
+                {%- capture price %}{{ product.pricing.sale_price | money, compact: true }}{%- endcapture %}
+                {% if product.pricing.variable_pricing? %}
+                  {{ "pricing.variable" | t: price: price }}
+                {%- else %}
+                  {{ price }}
+                {% endif %}
+              {%- endif %}
+            </span>
+            <br>
+            <span class="sc-shade-dark sc-font-bold sc-font-small is-original sc-font-line-through">
+              {{ product.pricing.original_price | money, compact: true }}
+            </span>
+            <br>
+          {%- else %}
+            <span class="sc-font-bold sc-font-base">
+              {%- if product.pricing.price == 0 %}
+                {{ "pricing.free" | t }}
+              {%- else %}
+                {%- capture price %}{{ product.pricing.price | money, compact: true }}{%- endcapture %}
+                {% if product.pricing.variable_pricing? %}
+                  {{ "pricing.variable" | t: price: price }}
+                {%- else %}
+                  {{ price }}
+                {% endif %}
+              {%- endif %}
+            </span>
+            <br>
+          {%- endif %}
+        {%- endif %}
+
+        {%- comment %} Subscriptions {% endcomment %}
+        {%- if product.subscription? %}
+          {%- capture timespan %}
+            {%- liquid
+              assign term = product.pricing.subscription_term | number, compact: true
+              assign unit = product.pricing.subscription_term_unit
+
+              if term != blank and unit != blank
+                render "shared/subscriptions/term_unit", unit: unit, number: term
+              endif
+            %}
+          {%- endcapture %}
+          <span class="SC-ProductCard_subscription sc-mt-micro">
+            {{ "pricing.subscription_timespan" | t: timespan: timespan }}
+          </span>
+          <br>
+        {%- endif %}
+      </div><!-- end pricing -->
+    </div>
+  </a>
+</div>

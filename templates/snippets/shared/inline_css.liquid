@@ -1,0 +1,38 @@
+{%- comment %}
+  if you need conditional styles using liquid and CSS then you should place
+  your inline CSS always wrapped by the <style> tag.
+{%- endcomment %}
+
+{%- if current_product.pricing.on_sale? %}
+  <style>
+    .sc-color-sale {
+      color: var(--sc-shade-dark);
+    }
+    #SC-ProductDisplayDetails .sc-mb-tiny.sc-font-large {
+      color: hsla(var(--sc-color-sale-h), var(--sc-color-sale-s), var(--sc-color-sale-l), 1);
+    }
+  </style>
+{%- endif %}
+
+{%- if current_product.pricing.on_sale? == false or current_product.pricing.deposit_required? == false %}
+    <style>
+    #SC-ProductDisplayDetails .sc-mb-tiny.sc-font-large {
+      color: var(--sc-shade-darkest);
+      font-size: var(--sc-font-large);
+      font-weight: var(--sc-font-bold);
+    }
+  </style>
+{%- endif %}
+
+{%- comment %}
+  Currently, the icon asset is being utilized within the slideshow,
+  and it's being provided as a core app asset. This means that we don't
+  have the flexibility to override it within SF or liquid templates.
+  This snippet injects the SVG asset with an inline CSS rule that supports SVG.
+{%- endcomment %}
+
+<style>
+  .tns-controls button {
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M256 417.9l17-17L465 209l17-17L448 158.1l-17 17-175 175L81 175l-17-17L30.1 192l17 17L239 401l17 17z'/></svg>");
+  }
+</style>

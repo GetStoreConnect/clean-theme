@@ -1,0 +1,78 @@
+{%- if current_request.path == '/categories' %}
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', ()=> {
+      const gridItems = document.querySelector('.SC-CardGrid');
+      const items = [...gridItems.children];
+
+      const categoryCard = (items) => {
+        for (let item in items){
+
+          items[item].classList.add('SC-CategoryCard');
+
+          const images = items[item].querySelectorAll('.SC-ImageLink');
+          const headingLinks = items[item].querySelectorAll('.SC-HeadingLink');
+          const headings = items[item].querySelectorAll('.SC-HeadingLink h4');
+          const svgs = items[item].querySelectorAll('svg');
+
+          if(svgs !== null || svgs !== undefined) {
+            [...svgs].forEach((svg)=> {
+              svg.setAttribute('viewBox', '0 0 100 100');
+            });
+          }
+
+          [...images].forEach((image)=> {
+            image.classList.remove('SC-ImageLink');
+            image.classList.add('SC-CategoryCard_image', 'sc-display-inline-block', 'sc-overflow-hidden');
+          });
+
+          [...headingLinks].forEach((link)=> {
+            link.classList.remove('SC-HeadingLink');
+          });
+
+          [...headings].forEach((heading)=> {
+            heading.classList.add('sc-font-400', 'sc-text-center', 'sc-shade-darkest');
+          });
+        }
+      };
+
+      categoryCard(items);
+
+      const createGridHeader = (gridItems) => {
+        const header = document.createElement('div');
+        header.classList.add('SC-PageHeader', 'sc-mt-xlarge');
+
+        const heading = document.createElement('h1');
+        heading.textContent = '{{ "categories.grid.heading" | t }}';
+
+        header.appendChild(heading);
+
+        gridItems.insertAdjacentElement('beforebegin', header);
+      }
+
+      createGridHeader(gridItems);
+
+    });
+  </script>
+{%- endif %}
+
+{%- if current_request.path == '/products' %}
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    const productGrid = document.querySelector('.SC-CardGrid');
+
+    const createGridHeader = (productGrid) => {
+      const header = document.createElement('div');
+      header.classList.add('SC-PageHeader');
+
+      const heading = document.createElement('h1');
+      heading.textContent = '{{ "products.grid.heading" | t }}';
+
+      header.appendChild(heading);
+
+      productGrid.insertAdjacentElement('beforebegin', header);
+    }
+
+    createGridHeader(productGrid);
+  });
+  </script>
+{%- endif %}

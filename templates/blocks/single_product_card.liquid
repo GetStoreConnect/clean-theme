@@ -1,0 +1,49 @@
+{%- comment %}
+  key: single_product_card
+  The user needs to create a content block using the Single Product Card and relate a product
+  to this content block.
+{%- endcomment %}
+<section id="{{ content_block.identifier }}" class="SC-SingleProduct sc-container sc-container-skinny sc-me-spacious sc-p-none sc-border-rounded sc-shadow-2">
+  {%- if content_block.products.size > 0 %}
+    {%- for product in content_block.products %}
+      <div class="sc-flex-col-to-row sc-gap-xlarge sc-pos-relative">
+        <div class="sc-one-half-medium-and-up" data-product-image-container="" style="touch-action: pan-y; user-select: none;">
+          <img loading="lazy" data-product-image="" src="{{ product.image.url }}" alt="{{ product.image.alt_text }}" class="sc-expand sc-h-100 sc-fit-cover">
+        </div>
+        <div class="sc-one-half-medium-and-up sc-flex-col sc-gap-large sc-p-base sc-justify-center">
+          <header>
+            <h1 class="sc-font-bold">{{ product.name }}</h1>
+            <div class="sc-shade-darker sc-font-bold sc-mb-small sc-pb-small sc-flex sc-gap-small sc-align-items-end">
+              {%- if product.pricing.on_sale? == true %}
+                <span class="sc-font-large sc-color-sale">{{ product.pricing.sale_price | money }}</span>
+                <span class="sc-shade-neutral sc-font-medium sc-font-line-through">{{ product.pricing.original_price | money }}</span>
+              {%- else %}
+                <span class="sc-font-large">{{ product.pricing.price | money }}</span>
+              {%- endif %}
+            </div>
+            {{ product.summary_content }}
+          </header>
+          <div class="sc-flex sc-gap-large">
+            <div class="sc-grow">
+              <a href="{{ product.path }}" class="SC-Button SC-Button-add sc-grow sc-border-rounded">{{ "See Product" }}</a>
+            </div>
+          </div>
+        </div>
+        {%- comment %} Tags {% endcomment %}
+        {%- if product.tags.size > 0 %}
+          <div class="SC-ProductCard_tags">
+            {%- assign tags = product.tags %}
+            {% for tag in tags %}
+              <span class="SC-ProductCard_tag SC-ProductCard_tag-{{ tag.value | parameterize }}">
+                {{ tag.value }}
+              </span>
+            {% endfor %}
+          </div>
+        {%- endif %}
+      </div>
+      {% break %}
+    {%- endfor %}
+  {%- else %}
+    <span class="sc-shade-neutral">You haven't assigned a product to the content block </span>
+  {%- endif %}
+</section>
