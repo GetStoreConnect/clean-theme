@@ -6,9 +6,11 @@ This is a multi-purpose theme, ideal for cosmetic, clothing, or fashion industri
 
 This theme has a specific folder structure. Some folders may be empty, but they need to remain part of the theme structure as they are not overridden or used for new templates.
 
+Also, it has been developed using the [Base Theme](https://github.com/GetStoreConnect/base-theme){: target="_blank" } as a boilerplate. The Clean theme doesn't contain all the base theme structure, we only include those customised, modified and new templates, snippets, variables or translations. Feel free to create a brand new theme using the base theme.
+
 ## Theme Installer
 
-The theme installer is located in your Salesforce org, where you need to upload this theme as a zip file. Before uploading, remove the .git directory and README.md file from this repo. The theme installer displays errors if it does not find the standard directory structure.
+The theme installer is in your Salesforce org, where you must upload this theme as a zip file. Before uploading, remove the .git directory and README.md file from this repo. The theme installer displays errors if it does not find the standard directory structure.
 
 ## New Templates
 
@@ -57,5 +59,10 @@ You can follow the instructions in this document to add content blocks to the pi
 - Now, go to the theme template list and remove the `.liquid` on each template
 - Rename
   - snippets/products/card/simple_card > snippets/products/simple_card
-  - snippets/products/card/simple_card > snippets/products/card
+  - snippets/products/card/card > snippets/products/card
 - Preview your theme
+
+### Recommended Help Articles
+
+- StoreConnect [Theme Builder Reference](https://help.getstoreconnect.com/documentation/themes/theme-reference.html)
+- StoreConnect [Liquid Reference](https://help.getstoreconnect.com/documentation/liquid/liquid-reference.html)
