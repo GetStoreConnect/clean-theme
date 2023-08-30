@@ -6,7 +6,7 @@ This is a multi-purpose theme, ideal for cosmetic, clothing, or fashion industri
 
 This theme has a specific folder structure. Some folders may be empty, but they need to remain part of the theme structure as they are not overridden or used for new templates.
 
-Also, it has been developed using the [Base Theme](https://github.com/GetStoreConnect/base-theme){: target="_blank" } as a boilerplate. The Clean theme doesn't contain all the base theme structure, we only include those customised, modified and new templates, snippets, variables or translations. Feel free to create a brand new theme using the base theme.
+Also, it has been developed using the [Base Theme](https://github.com/GetStoreConnect/base-theme) as a boilerplate. The Clean theme doesn't contain all the base theme structure, we only include those customised, modified and new templates, snippets, variables or translations. Feel free to create a brand new theme using the base theme.
 
 ## Theme Installer
 
@@ -49,7 +49,7 @@ You can create new templates as long as they reside within the standard director
 
 ## How to Add Content Blocks to Picklist
 
-You can follow the instructions in this document to add content blocks to the picklist: <https://help.getstoreconnect.com/documentation/adding-templates-to-content-template-picklist.html>
+You can follow the instructions in this document to [add content blocks to the picklist](https://help.getstoreconnect.com/documentation/adding-templates-to-content-template-picklist.html).
 
 ## Configuration
 
