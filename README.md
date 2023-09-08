@@ -2,6 +2,9 @@
 
 This is a multi-purpose theme, ideal for cosmetic, clothing, or fashion industries.
 
+<img width="1275" alt="clean_theme_image_text_overlay" src="https://github.com/GetStoreConnect/clean-theme/assets/77841884/87bb29b7-f936-4db4-b8c7-f06be5255dc5">
+
+
 ## Directory Structure
 
 This theme has a specific folder structure. Some folders may be empty, but they need to remain part of the theme structure as they are not overridden or used for new templates.
@@ -17,6 +20,9 @@ The theme installer is in your Salesforce org, where you must upload this theme 
 You can create new templates as long as they reside within the standard directory structure.
 
 ## Features
+
+<img width="1146" alt="featured_categories_slider" src="https://github.com/GetStoreConnect/clean-theme/assets/77841884/90d001bb-c475-49bd-b3a2-90671c1b8566">
+
 
 - New card carousels for featured categories, products, or filtered products
 - New content template that renders one category only. This is ideal if you want to showcase products that are part of a given category you want to promote. It also helps to keep your org organized systematically.
