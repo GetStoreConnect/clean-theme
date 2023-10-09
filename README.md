@@ -60,7 +60,10 @@ You can follow the instructions in this document to [add content blocks to the p
 ## Configuration
 
 - Ensure that your root directory does not contain any `.git` hidden folders or files
+- Follow the base theme folder directory even when the folder are empty
+- Make sure the root folder is named `theme`
 - Compress it to a zip file
+- Name your zip file `theme`
 - Upload it via the theme importer
 - Now, go to the theme template list and remove the `.liquid` on each template
 - Rename
