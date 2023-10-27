@@ -199,7 +199,7 @@
 .sc-cart_dropdown {
   background-color: var(--sc-header-bg);
   color: initial;
-  z-index: 12;
+  z-index: 6;
   height: 100%;
   position: fixed;
   right: -380px;
@@ -251,6 +251,21 @@
   line-height: 60px;
   text-transform: uppercase;
   transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+}
+.sc-cart_overlay {
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.sc-cart_dropdown.is-active + .sc-cart_overlay {
+  position: fixed;
 }
 
 .SC-CategoryCard {

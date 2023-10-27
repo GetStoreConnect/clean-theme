@@ -43,7 +43,7 @@
 
       <div class="sc-header_inner_right sc-grow">
         <ul class="SC-Menu tier1 end sc-align-items-center sc-justify-end" id="SC-HeaderMenuSecondary" style="column-gap: var(--sc-spacing-large);">
-         {%- render "header/search_trigger" %}
+          {%- render "header/dropdown/search_trigger" %}
           {%- render "header/dropdown/account" %}
           {%- render "header/dropdown/cart" %}
         </ul>
@@ -57,4 +57,5 @@
       </div>
     </div>
   </header>
+  {%- render "header/dropdown/cart_sidebar" %}
 {%- endif %}
