@@ -2,6 +2,7 @@
   --sc-article-width: 800px;
   --sc-border-rounded: 7px;
   --sc-grid-gap: var(--sc-spacing-large);
+  --sc-max-width: 1260px;
 }
 
 @media screen and (min-width: 768px) {
@@ -21,7 +22,7 @@
 }
 
 .sc-container-wrap {
-  max-width: 1260px;
+  max-width: var(--sc-max-width);
   margin-left: auto;
   margin-right: auto;
 }
@@ -328,11 +329,15 @@
   height: 100vh;
 }
 .sc-header .tier2.mega {
-  max-width: 80%;
-  margin-right: auto;
-  margin-right: auto;
-  margin-left: auto;
-  padding-top: 20px;
+  padding-top: var(--sc-spacing-base);
+}
+@media screen and (min-width: 992px) {
+  .sc-header .tier2.mega {
+    margin-right: auto;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 80%;
+  }
 }
 
 .SC-FeaturedCategories .tns-controls button {
@@ -498,10 +503,9 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
+@media screen and (max-width: 992px) {
   .SC-Count {
-    right: -25px;
-    top: 10px;
+    top: unset;
   }
 }
 
