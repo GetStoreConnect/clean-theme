@@ -8,15 +8,13 @@
 
 <li class="SC-Menu_item dropdown sc-cart sc-cursor-pointer" data-modal-trigger="cart" data-cart-menu>
   <span
-     class="SC-Menu_link sc-hide-up-to-medium">
-    <span class="sc-hide-up-to-medium sc-pointer-events-none">
+     class="SC-Menu_link">
+    <span class="SC-Icon SC-Icon-button SC-Icon-large sc-hide-large-and-up">
+      {%- render "shared/icons/cart" %}
+    </span>
+    <span class="sc-pointer-events-none sc-hide-up-to-large">
       {{ "header.dropdowns.cart.heading" | t }}
     </span>
     {{ item_count }}
   </span>
-
-  <a href="{{ current_store.cart_path }}" class="SC-Icon SC-Icon-button SC-Icon-large sc-hide-medium-and-up">
-    {%- render "shared/icons/cart" %}
-    {{ item_count }}
-  </a>
 </li>
