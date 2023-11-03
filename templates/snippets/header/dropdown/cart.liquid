@@ -1,0 +1,20 @@
+{%- capture item_count %}
+  {%- if current_cart != blank and current_cart.item_count > 0 %}
+    <div class="SC-Count sc-ml-tiny" data-cart-nav-count>
+      {{ current_cart.item_count }}
+    </div>
+  {%- endif %}
+{%- endcapture %}
+
+<li class="SC-Menu_item dropdown sc-cart sc-cursor-pointer" data-modal-trigger="cart" data-cart-menu>
+  <span
+     class="SC-Menu_link">
+    <span class="SC-Icon SC-Icon-button SC-Icon-large sc-hide-large-and-up">
+      {%- render "shared/icons/cart" %}
+    </span>
+    <span class="sc-pointer-events-none sc-hide-up-to-large">
+      {{ "header.dropdowns.cart.heading" | t }}
+    </span>
+    {{ item_count }}
+  </span>
+</li>

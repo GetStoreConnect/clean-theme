@@ -1,0 +1,34 @@
+{%- comment %} Sidebar {% endcomment %}
+{%- if current_cart != blank and current_cart.items.size > 0 %}
+  <div class="sc-cart_dropdown" data-modal="cart" data-sc-cart>
+    <div class="sc-cart_header sc-border-bottom">
+      <div class="sc-cart_header_section sc-p-small sc-border-right">
+        <button data-modal-trigger="cart" type="button">
+          {%- render 'shared/icons/close', width: '18', style_class: 'sc-mt-tiny' %}
+        </button>
+      </div>
+      <div class="sc-p-small">
+        <h3 class="sc-m-none">{{ "Shopping Cart" }}</h3>
+      </div>
+      <div class="sc-cart_header_section sc-p-small sc-border-left">
+      {{ current_cart.item_count }}
+      </div>
+    </div>
+    
+    {%- comment %} Line items {% endcomment %}
+
+    <div class="SC-CartProducts sc-grow sc-overflow-y-auto sc-ps-medium">
+      {%- render "shared/cart/items", source: current_cart, compact: true, width: "70px" %}
+    </div>
+    {%- comment %} Cart total {% endcomment %}
+    <div class="sc-cart_total sc-p-medium" data-cart-nav-summary>
+      {%- render "shared/order_total", source: current_cart, compact: true %}
+    </div>
+    {%- comment %} Checkout button {% endcomment %}
+    <div class="sc-cart_actions sc-color-white">
+      {%- render "shared/cart/view_cart_button", class: "sc-cart_button sc-bg-dark sc-one-half" %}
+      {%- render "shared/cart/checkout_button", class: "sc-cart_button sc-bg-darkest sc-one-half" %}
+    </div>
+  </div>
+{%- endif %}
+<div class="sc-cart_overlay" data-modal-trigger="cart"></div>
