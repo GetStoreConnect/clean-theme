@@ -29,15 +29,15 @@
         <div class="sc-flex sc-justify-center sc-hide-large-and-up">
           {{ store_logo }}
         </div>
-        <nav class="sc-nav sc-pos-relative" data-js-toggle-active-target="bar">
+        <nav class="sc-nav sc-pos-relative">
           {%- if current_store.header_menu != blank %}
             {{ current_store.header_menu.render }}
           {%- else %}
           <ul class="SC-Menu dropdown tier1 center sc-pos-relative" id="SC-HeaderMenuPrimary" data-menu="header">
             {%- render "header/menu" %}
           </ul>
-          {%- render "header/search_expandable" %}
           {%- endif %}
+          {%- render "header/search_expandable" %}
         </nav>
       </div>
 

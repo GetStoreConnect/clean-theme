@@ -21,6 +21,10 @@
   border-bottom: none;
 }
 
+.sc-color-white {
+  color: white;
+}
+
 .sc-container-wrap {
   max-width: var(--sc-max-width);
   margin-left: auto;
@@ -198,7 +202,6 @@
 }
 
 .sc-cart_dropdown {
-  background-color: var(--sc-header-bg);
   color: initial;
   z-index: 6;
   height: 100%;
@@ -507,6 +510,14 @@
   .SC-Count {
     top: unset;
   }
+}
+
+.SC-ProductCard_image {
+  aspect-ratio: 1/1;
+}
+.SC-ProductCard_points {
+  background-color: rgba(242, 242, 242, 0.7);
+  margin-bottom: 0;
 }
 
 @keyframes slideDown {
