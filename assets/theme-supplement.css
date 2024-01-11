@@ -543,11 +543,11 @@
   text-align: center;
 }
 
-.reviews-wrapper {
+.sc-review {
   display: grid;
 }
 
-.ratings-wrapper {
+.sc-review-wrapper {
   gap: 20px;
   padding: 50px;
   height: -webkit-fill-available;
@@ -558,11 +558,11 @@
   box-shadow: 0 1px 4px #8080801c;
 }
 
-.reviews-rating svg {
+.sc-review-rating svg {
   fill: #ffab41;
 }
 
-.reviews-message {
+.sc-review-message {
   font-style: italic;
 }
 

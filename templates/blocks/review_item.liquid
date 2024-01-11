@@ -1,21 +1,21 @@
-<div class="reviews-wrapper">
-  <div class="ratings-wrapper sc-flex-col sc-justify-center sc-align-items-center">
-    <div class="reviews-rating">
-      {%- render 'shared/icons/star' %}
-      {%- render 'shared/icons/star' %}
-      {%- render 'shared/icons/star' %}
-      {%- render 'shared/icons/star' %}
-      {%- render 'shared/icons/star' %}
+<div class="sc-review">
+  <div class="sc-review-wrapper sc-flex-col sc-justify-center sc-align-items-center" id="{{ content_block.identifier }}>
+    <div class="sc-review-rating">
+      {% render 'shared/icons/star', style_class: 'sc-icon-star' %}
+      {% render 'shared/icons/star', style_class: 'sc-icon-star' %}
+      {% render 'shared/icons/star', style_class: 'sc-icon-star' %}
+      {% render 'shared/icons/star', style_class: 'sc-icon-star' %}
+      {% render 'shared/icons/star', style_class: 'sc-icon-star' %}
     </div>
 
     {%- if content_block.title != blank %}
-      <p class="reviews-message sc-m-none sc-font-medium">
+      <p class="sc-review-message sc-m-none sc-font-medium">
         {{ content_block.title }}
       </p>
     {%- endif %}
 
     {%- if content_block.subtitle != blank %}
-      <p class="sc-m-none sc-font-medium sc-font-bold">
+      <p class="sc-review-content sc-m-none sc-font-medium sc-font-bold">
         {{ content_block.subtitle }}
       </p>
     {%- endif %}
