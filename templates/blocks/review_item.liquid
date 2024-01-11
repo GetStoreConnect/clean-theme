@@ -1,0 +1,23 @@
+<div class="reviews-wrapper">
+  <div class="ratings-wrapper">
+    <div class="reviews-rating">
+      {%- render 'shared/icons/star' %}
+      {%- render 'shared/icons/star' %}
+      {%- render 'shared/icons/star' %}
+      {%- render 'shared/icons/star' %}
+      {%- render 'shared/icons/star' %}
+    </div>
+  
+    {%- if content_block.title != blank %}
+      <p class="reviews-message">
+        {{ content_block.title }}
+      </p>
+    {%- endif %}
+  
+    {%- if content_block.subtitle != blank %}
+      <p class="reviews-author">
+        {{ content_block.subtitle }}
+      </p>
+    {%- endif %}
+  </div>
+</div>
