@@ -506,7 +506,7 @@
   }
 }
 
-.SC-TabPanel_body:not(.sc-hide) {
+.SC-TabscFAQContent_body:not(.sc-hide) {
   border-top-width: 2px;
 }
 
@@ -539,7 +539,7 @@
   }
 }
 
-.panel {
+.scFAQContent {
   display: none;
   background-color: white;
   overflow: hidden;
@@ -548,11 +548,11 @@
   background-color: #f3e4de;
 }
 
-.panel-holder-pdf {
+.scFAQContent-holder-pdf {
   margin: 0;
 }
 
-.accordion {
+.sc-faq-accordion {
   line-height: 26px;
   cursor: pointer;
   border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
@@ -561,31 +561,31 @@
   background-color: #f3e4de;
 }
 
-.accordion:nth-of-type(3) {
+.sc-faq-accordion:nth-of-type(3) {
   border: none;
 }
 
-.active-accordion:nth-of-type(3) {
-  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
-}
-
-.accordion-icon-text-holder {
+.sc-faq-accordion-icon-text-holder {
   gap: 20px;
 }
 
-.accordion-icon-text-holder svg {
+.sc-faq-accordion-icon-text-holder svg {
   fill: none;
 }
 
-.active-accordion {
+.sc-faq-active-accordion {
   border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
   margin-bottom: 0;
 }
 
-.active-accordion:before {
+.sc-faq-active-accordion:before {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+
+.sc-faq-active-accordion:nth-of-type(3) {
+  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
 }
 
 @font-face {
@@ -593,7 +593,7 @@
   src: url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/fonts/glyphicons-halflings-regular.woff');
 }
 
-.faqs-holder .accordion:before {
+.sc-faq-wrapper .sc-faq-accordion:before {
   font-family: 'Glyphicons';
   content: '\e259';
   float: right;
@@ -601,7 +601,7 @@
   font-size: 15px;
 }
 
-.faq-heading.active h4:before {
+.sc-faq-accordion h4:before {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
@@ -612,7 +612,7 @@
 }
 
 @media (min-width: 1200px) {
-  .panel {
+  .scFAQContent {
     padding: 24px 70px;
   }
 }

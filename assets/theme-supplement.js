@@ -54,17 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-  const faqAccordions = document.querySelectorAll('.accordion')
+  const faqAccordions = document.querySelectorAll('.sc-faq-accordion')
 
   faqAccordions.forEach((accordion) => {
     accordion.addEventListener('click', function () {
-      this.classList.toggle('active-accordion')
-      const panel = this.nextElementSibling
+      this.classList.toggle('sc-faq-active-accordion')
+      const scFAQContent = this.nextElementSibling
 
-      if (panel.style.display === 'block') {
-        panel.style.display = 'none'
+      if (scFAQContent.style.display === 'block') {
+        scFAQContent.style.display = 'none'
       } else {
-        panel.style.display = 'block'
+        scFAQContent.style.display = 'block'
       }
     })
   })
