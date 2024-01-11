@@ -506,7 +506,7 @@
   }
 }
 
-.SC-Tabsc-faq-content_body:not(.sc-hide) {
+.SC-Tabsc-faq_content_body:not(.sc-hide) {
   border-top-width: 2px;
 }
 
@@ -539,7 +539,7 @@
   }
 }
 
-.sc-faq-content {
+.sc-faq_content {
   display: none;
   background-color: white;
   overflow: hidden;
@@ -548,11 +548,11 @@
   background-color: #f3e4de;
 }
 
-.sc-faq-pdf {
+.sc-faq_pdf {
   margin: 0;
 }
 
-.sc-faq-accordion {
+.sc-faq_accordion {
   line-height: 26px;
   cursor: pointer;
   border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
@@ -561,30 +561,30 @@
   background-color: #f3e4de;
 }
 
-.sc-faq-accordion:nth-of-type(3) {
+.sc-faq_accordion:nth-of-type(3) {
   border: none;
 }
 
-.sc-faq-holder {
+.sc-faq_holder {
   gap: 20px;
 }
 
-.sc-faq-holder svg {
+.sc-faq_holder svg {
   fill: none;
 }
 
-.sc-faq-active-accordion {
+.sc-faq_active-accordion {
   border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
   margin-bottom: 0;
 }
 
-.sc-faq-active-accordion:before {
+.sc-faq_active-accordion:before {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-.sc-faq-active-accordion:nth-of-type(3) {
+.sc-faq_active-accordion:nth-of-type(3) {
   border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
 }
 
@@ -593,7 +593,7 @@
   src: url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/fonts/glyphicons-halflings-regular.woff");
 }
 
-.sc-faq-wrapper .sc-faq-accordion:before {
+.sc-faq_wrapper .sc-faq_accordion:before {
   font-family: "Glyphicons";
   content: "\e259";
   float: right;
@@ -601,14 +601,14 @@
   font-size: 15px;
 }
 
-.sc-faq-accordion h4:before {
+.sc-faq_accordion h4:before {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 @media (min-width: 1200px) {
-  .sc-faq-content {
+  .sc-faq_content {
     padding: 24px 70px;
   }
 }

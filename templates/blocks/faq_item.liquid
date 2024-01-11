@@ -1,17 +1,19 @@
-<div class="sc-faq-wrapper" id="{{ content_block.identifier }}">
-  <h4 class="sc-faq-accordion sc-m-none sc-font-large sc-font-bold">
-    <span class="sc-faq-holder sc-flex sc-align-center">
-      {%- render 'shared/icons/faq', style_class: 'sc-icon-faq' %}
-      {%- if content_block.title != blank %}
-        {{ content_block.title }}
-      {%- endif %}
-    </span>
-  </h4>
-  <div class="sc-faq-content">
-    <div class="sc-faq-base">
-      {%- if content_block.content != blank %}
-          {{ content_block.content }}
-      {%- endif %}
+<div class="sc-faq" id="{{ content_block.identifier }}">
+  <div class="sc-faq_wrapper">
+    <h4 class="sc-faq_accordion sc-m-none sc-font-large sc-font-bold">
+      <span class="sc-faq_holder sc-flex sc-align-center">
+        {%- render 'shared/icons/faq', style_class: 'sc-icon-faq' %}
+        {%- if content_block.title != blank %}
+          {{ content_block.title }}
+        {%- endif %}
+      </span>
+    </h4>
+    <div class="sc-faq_content">
+      <div class="sc-faq_base">
+        {%- if content_block.content != blank %}
+            {{ content_block.content }}
+        {%- endif %}
+      </div>
     </div>
   </div>
 </div>
