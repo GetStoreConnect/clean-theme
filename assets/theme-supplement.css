@@ -95,28 +95,34 @@
 }
 .SC-Article_data > span:not(:last-child):after {
   position: absolute;
-  content: "";
+  content: '';
   background: var(--sc-shade-light);
   top: 7px;
   height: 35%;
   width: 1px;
   margin-left: 10px;
 }
-.SC-Article_hero_image, .SC-Article_placeholder {
+.SC-Article_hero_image,
+.SC-Article_placeholder {
   display: block;
   height: 350px;
 }
 @media screen and (min-width: 768px) {
-  .SC-Article_hero_image, .SC-Article_placeholder {
+  .SC-Article_hero_image,
+  .SC-Article_placeholder {
     height: 450px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .SC-Article_hero_image, .SC-Article_placeholder {
+  .SC-Article_hero_image,
+  .SC-Article_placeholder {
     height: 550px;
   }
 }
-.SC-Article_hero_image img, .SC-Article_hero_image svg, .SC-Article_placeholder img, .SC-Article_placeholder svg {
+.SC-Article_hero_image img,
+.SC-Article_hero_image svg,
+.SC-Article_placeholder img,
+.SC-Article_placeholder svg {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -137,7 +143,8 @@
     width: 100%;
   }
 }
-.SC-ArticleCard_image img, .SC-ArticleCard_image svg {
+.SC-ArticleCard_image img,
+.SC-ArticleCard_image svg {
   object-fit: cover;
   height: 100%;
 }
@@ -169,8 +176,9 @@
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-.sc-button_outline span::before, .sc-button_outline span::after {
-  content: "";
+.sc-button_outline span::before,
+.sc-button_outline span::after {
+  content: '';
   position: absolute;
   height: 2px;
   width: 100%;
@@ -257,7 +265,7 @@
   transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
 }
 .sc-cart_overlay {
-  content: "";
+  content: '';
   top: 0;
   right: 0;
   bottom: 0;
@@ -280,13 +288,15 @@
   width: 100%;
   aspect-ratio: 1/1;
 }
-.SC-CategoryCard_image img, .SC-CategoryCard_image svg {
+.SC-CategoryCard_image img,
+.SC-CategoryCard_image svg {
   transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.SC-CategoryCard_image img:hover, .SC-CategoryCard_image svg:hover {
+.SC-CategoryCard_image img:hover,
+.SC-CategoryCard_image svg:hover {
   transform: scale(1.03);
 }
 
@@ -489,8 +499,8 @@
 }
 
 @media screen and (min-width: 768px) {
-  .SC-FeaturedCategories .tns-controls button[data-controls=prev],
-  .SC-FeaturedProducts .tns-controls button[data-controls=prev] {
+  .SC-FeaturedCategories .tns-controls button[data-controls='prev'],
+  .SC-FeaturedProducts .tns-controls button[data-controls='prev'] {
     left: unset;
     right: 80px;
   }
@@ -526,6 +536,84 @@
   }
   to {
     transform: translateY(0);
+  }
+}
+
+.panel {
+  display: none;
+  background-color: white;
+  overflow: hidden;
+  padding: 24px;
+  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
+  background-color: #f3e4de;
+}
+
+.panel-holder-pdf {
+  margin: 0;
+}
+
+.accordion {
+  line-height: 26px;
+  cursor: pointer;
+  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
+  padding: 24px;
+  color: #272727;
+  background-color: #f3e4de;
+}
+
+.accordion:nth-of-type(3) {
+  border: none;
+}
+
+.active-accordion:nth-of-type(3) {
+  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
+}
+
+.accordion-icon-text-holder {
+  gap: 20px;
+}
+
+.accordion-icon-text-holder svg {
+  fill: none;
+}
+
+.active-accordion {
+  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
+  margin-bottom: 0;
+}
+
+.active-accordion:before {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+@font-face {
+  font-family: Glyphicons;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/fonts/glyphicons-halflings-regular.woff');
+}
+
+.faqs-holder .accordion:before {
+  font-family: 'Glyphicons';
+  content: '\e259';
+  float: right;
+  transition: all 0.5s;
+  font-size: 15px;
+}
+
+.faq-heading.active h4:before {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+#SC-ContentBlockContainer-faqs-container .SC-ContentBlockContainer_body {
+  padding: 0;
+}
+
+@media (min-width: 1200px) {
+  .panel {
+    padding: 24px 70px;
   }
 }
 
