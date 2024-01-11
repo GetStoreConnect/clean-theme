@@ -543,7 +543,7 @@
   display: grid;
 }
 
-.sc-review-wrapper {
+.sc-review_wrapper {
   gap: 20px;
   padding: 50px;
   height: -webkit-fill-available;
@@ -552,11 +552,11 @@
   box-shadow: 0 1px 4px #8080801c;
 }
 
-.sc-review-rating svg {
+.sc-review_rating svg {
   fill: #ffab41;
 }
 
-.sc-review-message {
+.sc-review_message {
   font-style: italic;
 }
 
