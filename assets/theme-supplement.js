@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   let e = (function () {
       let t = {
           items: 1,
@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
         r = []
       return (
         $(() => {
-          document.querySelectorAll('[data-featured-slider]') &&
-            [...document.querySelectorAll('[data-featured-slider]')].map(
+          document.querySelectorAll("[data-featured-slider]") &&
+            [...document.querySelectorAll("[data-featured-slider]")].map(
               (t) => {
                 e.init(
-                  '[data-featured-slider=' +
-                    t.getAttribute('data-featured-slider') +
-                    ']'
+                  "[data-featured-slider=" +
+                    t.getAttribute("data-featured-slider") +
+                    "]"
                 )
               }
             )
@@ -34,15 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       )
     })(),
-    t = document.querySelector('#sc-header'),
+    t = document.querySelector("#sc-header"),
     r = t.getBoundingClientRect().height / 2,
-    i = document.querySelector('nav.sc-header_inner'),
+    i = document.querySelector("nav.sc-header_inner"),
     s = (e) => {
       e.forEach((e) => {
         e.target,
           e.isIntersecting
-            ? i.classList.remove('sticky')
-            : i.classList.add('sticky')
+            ? i.classList.remove("sticky")
+            : i.classList.add("sticky")
       })
     },
     a = new IntersectionObserver(s, {
@@ -53,18 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
   a.observe(t)
 })
 
-document.addEventListener('DOMContentLoaded', function () {
-  const faqAccordions = document.querySelectorAll('.sc-faq-accordion')
+document.addEventListener("DOMContentLoaded", function () {
+  const faqAccordions = document.querySelectorAll(".sc-faq-accordion")
 
   faqAccordions.forEach((accordion) => {
-    accordion.addEventListener('click', function () {
-      this.classList.toggle('sc-faq-active-accordion')
-      const scFAQContent = this.nextElementSibling
+    accordion.addEventListener("click", function () {
+      this.classList.toggle("sc-faq-active-accordion")
+      const faqContent = this.nextElementSibling
 
-      if (scFAQContent.style.display === 'block') {
-        scFAQContent.style.display = 'none'
+      if (faqContent.style.display === "block") {
+        faqContent.style.display = "none"
       } else {
-        scFAQContent.style.display = 'block'
+        faqContent.style.display = "block"
       }
     })
   })

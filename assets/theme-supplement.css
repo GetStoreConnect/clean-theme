@@ -95,7 +95,7 @@
 }
 .SC-Article_data > span:not(:last-child):after {
   position: absolute;
-  content: '';
+  content: "";
   background: var(--sc-shade-light);
   top: 7px;
   height: 35%;
@@ -178,7 +178,7 @@
 }
 .sc-button_outline span::before,
 .sc-button_outline span::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 2px;
   width: 100%;
@@ -265,7 +265,7 @@
   transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
 }
 .sc-cart_overlay {
-  content: '';
+  content: "";
   top: 0;
   right: 0;
   bottom: 0;
@@ -499,14 +499,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  .SC-FeaturedCategories .tns-controls button[data-controls='prev'],
-  .SC-FeaturedProducts .tns-controls button[data-controls='prev'] {
+  .SC-FeaturedCategories .tns-controls button[data-controls="prev"],
+  .SC-FeaturedProducts .tns-controls button[data-controls="prev"] {
     left: unset;
     right: 80px;
   }
 }
 
-.SC-TabscFAQContent_body:not(.sc-hide) {
+.SC-Tabsc-faq-content_body:not(.sc-hide) {
   border-top-width: 2px;
 }
 
@@ -539,7 +539,7 @@
   }
 }
 
-.scFAQContent {
+.sc-faq-content {
   display: none;
   background-color: white;
   overflow: hidden;
@@ -548,7 +548,7 @@
   background-color: #f3e4de;
 }
 
-.scFAQContent-holder-pdf {
+.sc-faq-pdf {
   margin: 0;
 }
 
@@ -565,11 +565,11 @@
   border: none;
 }
 
-.sc-faq-accordion-icon-text-holder {
+.sc-faq-holder {
   gap: 20px;
 }
 
-.sc-faq-accordion-icon-text-holder svg {
+.sc-faq-holder svg {
   fill: none;
 }
 
@@ -590,12 +590,12 @@
 
 @font-face {
   font-family: Glyphicons;
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/fonts/glyphicons-halflings-regular.woff');
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/fonts/glyphicons-halflings-regular.woff");
 }
 
 .sc-faq-wrapper .sc-faq-accordion:before {
-  font-family: 'Glyphicons';
-  content: '\e259';
+  font-family: "Glyphicons";
+  content: "\e259";
   float: right;
   transition: all 0.5s;
   font-size: 15px;
@@ -607,12 +607,8 @@
   transform: rotate(180deg);
 }
 
-#SC-ContentBlockContainer-faqs-container .SC-ContentBlockContainer_body {
-  padding: 0;
-}
-
 @media (min-width: 1200px) {
-  .scFAQContent {
+  .sc-faq-content {
     padding: 24px 70px;
   }
 }
