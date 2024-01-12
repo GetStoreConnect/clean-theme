@@ -3,6 +3,9 @@
   --sc-border-rounded: 7px;
   --sc-grid-gap: var(--sc-spacing-large);
   --sc-max-width: 1260px;
+  --sc-color-golden: #ffab41;
+  --sc-border-lightest: 1px solid rgba(128, 128, 128, 0.16);
+  --sc-spacing-base: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -544,16 +547,16 @@
 }
 
 .sc-review_wrapper {
-  gap: 20px;
+  gap: var(--sc-spacing-base);
   padding: 50px;
   height: -webkit-fill-available;
   text-align: center;
-  border: 1px solid rgba(128, 128, 128, 0.16);
+  border: var(--sc-border-lightest);
   box-shadow: 0 1px 4px #8080801c;
 }
 
 .sc-review_rating svg {
-  fill: #ffab41;
+  fill: var(--sc-color-golden);
 }
 
 .sc-review_message {
