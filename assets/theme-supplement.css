@@ -573,18 +573,18 @@
   fill: none;
 }
 
-.sc-faq_active-accordion {
+.sc-faq-active_accordion {
   border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
   margin-bottom: 0;
 }
 
-.sc-faq_active-accordion:before {
+.sc-faq-active_accordion:before {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-.sc-faq_active-accordion:nth-of-type(3) {
+.sc-faq-active_accordion:nth-of-type(3) {
   border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
 }
 
