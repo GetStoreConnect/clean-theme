@@ -1,0 +1,29 @@
+<div class="sc-testimonial">
+  <div class="sc-testimonial_item sc-text-center">
+    <div class="sc-testimonial_stars sc-flex sc-justify-space-start">
+      {% render 'shared/icons/star', style_class: 'sc-icon-star', width: 17, height: 17 %}
+      {% render 'shared/icons/star', style_class: 'sc-icon-star', width: 17, height: 17 %}
+      {% render 'shared/icons/star', style_class: 'sc-icon-star', width: 17, height: 17 %}
+      {% render 'shared/icons/star', style_class: 'sc-icon-star', width: 17, height: 17 %}
+      {% render 'shared/icons/star', style_class: 'sc-icon-star', width: 17, height: 17 %}
+    </div>
+
+    {%- if content_block.title != blank %}
+      <p class="sc-testimonial_tagline sc-font-bold sc-font-base">
+        {{ content_block.title }}
+      </p>
+    {%- endif %}
+
+    {%- if content_block.subtitle != blank %}
+      <h1 class="sc-testimonial_comment sc-font-xlarge sc-font-bold">
+        {{ content_block.subtitle }}
+      </h1>
+    {%- endif %}
+
+    {%- if content_block.pull_text != blank %}
+      <p class="sc-testimonial_tagline">
+        {{ content_block.pull_text }}
+      </p>
+    {%- endif %}
+  </div>
+</div>
