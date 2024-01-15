@@ -52,20 +52,3 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   a.observe(t)
 })
-
-document.addEventListener("DOMContentLoaded", function () {
-  const faqAccordions = document.querySelectorAll(".sc-faq_accordion")
-
-  faqAccordions.forEach((accordion) => {
-    accordion.addEventListener("click", function () {
-      this.classList.toggle("sc-faq-active_accordion")
-      const faqContent = this.nextElementSibling
-
-      if (faqContent.style.display === "block") {
-        faqContent.style.display = "none"
-      } else {
-        faqContent.style.display = "block"
-      }
-    })
-  })
-})

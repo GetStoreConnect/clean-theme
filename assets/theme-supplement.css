@@ -3,6 +3,7 @@
   --sc-border-rounded: 7px;
   --sc-grid-gap: var(--sc-spacing-large);
   --sc-max-width: 1260px;
+  --sc-border-color: hsl(0, 0%, 85%);
 }
 
 @media screen and (min-width: 768px) {
@@ -539,53 +540,50 @@
   }
 }
 
-.sc-faq_content {
-  display: none;
-  background-color: white;
-  overflow: hidden;
-  padding: 24px;
-  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
-  background-color: #f3e4de;
+.SC-Accordion:first-child {
+  border: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
-.sc-faq_pdf {
-  margin: 0;
+.SC-Accordion:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
-.sc-faq_accordion {
-  line-height: 26px;
-  cursor: pointer;
-  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
-  padding: 24px;
-  color: #272727;
-  background-color: #f3e4de;
-}
-
-.sc-faq_accordion:nth-of-type(3) {
-  border: none;
-}
-
-.sc-faq_holder {
+.SC-Accordion_holder {
   gap: 20px;
 }
 
-.sc-faq_holder svg {
+.SC-Accordion_holder svg {
   fill: none;
 }
 
-.sc-faq-active_accordion {
-  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
-  margin-bottom: 0;
+.SC-Accordion_header {
+  padding: 20px 0;
 }
 
-.sc-faq-active_accordion:before {
+.SC-Accordion.is-active .SC-Accordion_header {
+  border-bottom: 1px solid var(--sc-border-color);
+}
+
+.SC-Accordion_body.is-expanded {
+  margin-bottom: 0;
+  padding: 20px;
+}
+
+.is-active .SC-Accordion_header:before {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-.sc-faq-active_accordion:nth-of-type(3) {
-  border-bottom: 0.0625rem solid rgba(39, 39, 39, 0.1);
+.is-expanded:nth-of-type(3) {
+  border-bottom: 1px solid var(--sc-border-color);
+}
+
+.sc-faq_pdf {
+  margin: 0;
 }
 
 @font-face {
@@ -593,23 +591,22 @@
   src: url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/fonts/glyphicons-halflings-regular.woff");
 }
 
-.sc-faq_wrapper .sc-faq_accordion:before {
+.SC-Accordion .SC-Accordion_header:before {
   font-family: "Glyphicons";
   content: "\e259";
   float: right;
   transition: all 0.5s;
   font-size: 15px;
-}
-
-.sc-faq_accordion h4:before {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  transform: rotate(180deg);
+  margin-top: 5px;
 }
 
 @media (min-width: 1200px) {
-  .sc-faq_content {
-    padding: 24px 70px;
+  .SC-Accordion_body.is-expanded {
+    padding: 20px 60px;
+  }
+
+  .SC-Accordion_header {
+    padding: 20px;
   }
 }
 

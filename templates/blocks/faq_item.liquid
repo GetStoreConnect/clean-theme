@@ -1,19 +1,17 @@
-<div class="sc-faq" id="{{ content_block.identifier }}">
-  <div class="sc-faq_wrapper">
-    <h4 class="sc-faq_accordion sc-m-none sc-font-large sc-font-bold">
-      <span class="sc-faq_holder sc-flex sc-align-center">
-        {%- render 'shared/icons/faq', style_class: 'sc-icon-faq' %}
-        {%- if content_block.title != blank %}
-          {{ content_block.title }}
-        {%- endif %}
-      </span>
-    </h4>
-    <div class="sc-faq_content">
-      <div class="sc-faq_base">
-        {%- if content_block.content != blank %}
-            {{ content_block.content }}
-        {%- endif %}
-      </div>
+<div class="SC-Accordion" id="{{ content_block.identifier }}">
+  <button class="SC-Accordion_header sc-m-none sc-font-large sc-font-bold sc-display-block" data-accordion-trigger="{{ content_block.identifier }}" type="button">
+    <span class="SC-Accordion_holder sc-m-none sc-flex sc-align-center ">
+      {%- render 'shared/icons/faq', style_class: 'sc-icon-faq' %}
+      {%- if content_block.title != blank %}
+        {{ content_block.title }}
+      {%- endif %}
+    </span>
+  </button>
+  <div class="SC-Accordion_body" aria-expanded="false" data-accordion-target="{{ content_block.identifier }}">
+    <div class="SC-Accordion_base">
+      {%- if content_block.content != blank %}
+          {{ content_block.content }}
+      {%- endif %}
     </div>
   </div>
 </div>
