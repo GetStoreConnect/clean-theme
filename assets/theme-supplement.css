@@ -3,6 +3,7 @@
   --sc-border-rounded: 7px;
   --sc-grid-gap: var(--sc-spacing-large);
   --sc-max-width: 1260px;
+  --sc-color-golden: #ffab41;
 }
 
 @media screen and (min-width: 768px) {
@@ -548,8 +549,6 @@
   padding: 50px;
   height: -webkit-fill-available;
   text-align: center;
-  border: var(--sc-border-lightest);
-  box-shadow: 0 1px 4px #8080801c;
 }
 
 .sc-review_rating svg {
