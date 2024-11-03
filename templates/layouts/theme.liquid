@@ -5,11 +5,7 @@
 {%- default csrf_meta_tags: blank -%}
 {%- default data: blank -%}
 {%- default id: blank -%}
-{%- default sc_javascript: blank -%}
-{%- default sc_stylesheet: blank -%}
 {%- default sc_support: blank -%}
-{%- default theme_javascript: blank -%}
-{%- default theme_stylesheet: blank -%}
 {%- default theme_supplement_javascript: blank -%}
 {%- default theme_supplement_stylesheet: blank -%}
 {%- default title: blank -%}
@@ -20,15 +16,13 @@
 <!doctype html>
 <html lang="{{ current_store.locale }}">
   <head>
-    <title>{{ title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ csrf_meta_tags }}
     {{ csp_meta_tag }}
     {%- render "meta_data", title: title, meta_keywords: meta_keywords, meta_description: meta_description %}
 
     {%- comment -%} Styles {%- endcomment -%}
-    {{ sc_stylesheet }}
-    {{ theme_stylesheet }}
+    {% require "styles/theme.css" %}
     {{ theme_supplement_stylesheet }}
     {% if current_store.global_css != blank %}<style>{{ current_store.global_css }}</style>{% endif %}
     {%- render "styles" %}
@@ -39,29 +33,33 @@
     {%- comment -%} Scripts {%- endcomment -%}
     {%- render "shared/product_tabs.js" %}
     {%- render "shared/category_grid_card.js" %}
-    {{ sc_javascript }}
-    {{ theme_javascript }}
+    {% require "scripts/configure.js" %}
+    {% require "scripts/theme.js" %}
     {{ theme_supplement_javascript }}
     {% if current_store.global_javascript != blank %}<script>{{ current_store.global_javascript }}</script>{% endif %}
     {%- render "scripts" %}
-    {%- render "events" %}
     {%- render "shared/fonts" %}
     <style>{% render "clean_css" %}</style>
     {%- render "shared/inline_css" %}
     {{ sc_support }}
     {%- render "store/head" %}
+    {%- render "events" %}
   </head>
 
   <body id="{{ id }}" data-sc-controller="{{ controller }}" data-sc-action="{{ action }}" {{ data }}>
     {{ theme_bar }}
-    {%- render "header" %}
-    <main id="SC-Main">
-      {%- render "flash" %}
-      {%- render "privacy" %}
-      {{ body_content }}
-    </main>
-    {%- render "store/selector" %}
-    {%- render "footer" %}
-    {%- render "store/body" %}
+    {%- if controller == "salesforce_payments" %}
+      {%- render "salesforce_payments", content: body_content %}
+    {%- else %}
+      {%- render "header" %}
+      <main id="SC-Main">
+        {%- render "flash" %}
+        {%- render "privacy" %}
+        {{ body_content }}
+      </main>
+      {%- render "store/selector" %}
+      {%- render "footer" %}
+      {%- render "store/body" %}
+    {%- endif %}
   </body>
 </html>
