@@ -7,9 +7,9 @@
 
   <div class="SC-ProductCard" id="product_{{ product.id }}">
     {%- comment %} Image {% endcomment %}
-    <a class="SC-ProductCard_image sc-height-100" href="{{ product.path }}">
+    <a class="SC-ProductCard_image" href="{{ product.path }}">
       {%- if product.image != blank %}
-        <img class="sc-height-100" loading="lazy" src="{{ product.image.large_url }}"/>
+        <img loading="lazy" src="{{ product.image.large_url }}"/>
       {%- else %}
         {% render "shared/placeholder_image" %}
       {%- endif %}
