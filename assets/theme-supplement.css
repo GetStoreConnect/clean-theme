@@ -379,6 +379,19 @@
   justify-content: center;
 }
 
+.SC-CardGrid.is-offset-by-sidebar {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media only screen and (min-width: 992px) {
+  .SC-CardGrid.is-offset-by-sidebar, .CardGrid.is-offset-by-sidebar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .SC-CardGrid.is-offset-by-sidebar, .CardGrid.is-offset-by-sidebar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 .SC-ProductCard_image img {
   object-fit: cover;
 }
