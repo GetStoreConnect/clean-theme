@@ -19,7 +19,7 @@
 
     <div class="sc-flex sc-wrap-up-to-medium sc-align-items-center sc-gap-small-medium-and-up sc-expand">
 
-      <div class="sc-flex-col sc-gap-tiny sc-expand" style="max-width: var(--sc-product-info-max-width)">
+      <div class="sc-flex-col sc-gap-tiny sc-expand sc-font-small" style="max-width: var(--sc-product-info-max-width)">
         <a href="{{ line_item.product.path }}">
           {{ line_item.product.name }}
         </a>
@@ -31,7 +31,7 @@
         {%- endif %}
         {%- comment %} Quantity {% endcomment %}
         {%- if extended == false and line_item.product.can_select_quantity? %}
-          <span class="sc-one-quarter sc-font-small sc-font-light sc-whitespace-nowrap">
+          <span class="sc-one-quarter sc-font-micro sc-font-light sc-whitespace-nowrap">
             {{ "line_items.quantity" | t: quantity: line_item.quantity }}
           </span>
         {%- endif %}

@@ -1,10 +1,13 @@
 {%- if current_store.header != blank %}
   {{ current_store.header.render }}
 {%- else %}
+  {% require "scripts/menu.js" %}
   {%- capture store_logo %}
   <a href="{{ current_store.home_path }}" class="SC-Logo">
     {%- if current_store.logo != blank %}
-      <img src="{{ current_store.logo.url }}" class="SC-Logo_image">
+      <svg class="SC-Placeholder" width="180px" viewBox="0 0 180 40">
+        <rect width="100%" height="100%" rx="20"></rect>
+      </svg>
     {%- else %}
       <svg class="SC-Placeholder" width="180px" viewBox="0 0 180 40">
         <rect width="100%" height="100%" rx="20"></rect>
@@ -12,9 +15,9 @@
     {%- endif %}
   </a>
   {%- endcapture %}
-  <header class="sc-header" id="sc-header">
+  <header class="sc-header" id="sc-header" data-header>
     {%- render "header/geolocation" %}
-    <nav class="sc-header_inner sc-flex sc-justify-space-between sc-justify-align-center sc-align-items-center sc-expand">
+    <nav class="sc-header_inner sc-flex sc-justify-space-between sc-justify-align-center sc-align-items-center sc-expand" data-header-inner>
 
       <div class="sc-header_inner_left sc-grow">
         <button data-menu-init="{% if current_store.header_menu != blank %}{{ current_store.header_menu.identifier }}{% else %}header{% endif %}" class="SC-Icon SC-Icon-button SC-Icon-large sc-hide-large-and-up" type="button">
@@ -37,7 +40,6 @@
             {%- render "header/menu" %}
           </ul>
           {%- endif %}
-          {%- render "header/search_expandable" %}
         </nav>
       </div>
 
@@ -59,3 +61,5 @@
   </header>
   {%- render "header/dropdown/cart_sidebar" %}
 {%- endif %}
+
+{%- render "header/search_expandable" %}
