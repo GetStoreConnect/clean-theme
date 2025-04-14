@@ -5,25 +5,6 @@
   --sc-grid-gap: var(--sc-spacing-large);
   --sc-max-width: 1260px;
   --sc-color-golden: #ffab41;
-  --sc-color-primary-h: 220;
-  --sc-color-primary-s: 15%;
-  --sc-color-primary-l: 35%;
-  --sc-color-primary: hsl(220, 15%, 35%);
-  --sc-color-secondary-h: 32;
-  --sc-color-secondary-s: 5%;
-  --sc-color-secondary-l: 18%;
-  --sc-color-secondary: hsl(32, 5%, 18%);
-  --sc-menu-link-color-hover: var(--sc-color-primary);
-  --sc-footer-bg: white;
-  --sc-footer-color: var(--sc-shade-darkest);
-  --sc-color-sale: #e68e2e;
-  --sc-color-sale-h: 30;
-  --sc-color-sale-s: 75%;
-  --sc-color-sale-l: 55%;
-  --sc-color-error: #e05252;
-  --sc-color-sale-h: 0;
-  --sc-color-sale-s: 70%;
-  --sc-color-sale-l: 60%;
   --sc-font-micro: 12px;
   --sc-font-normal: 300;
   --sc-font-bold: 500;
@@ -151,6 +132,25 @@ h1 {
   padding: 0;
   cursor: pointer;
   font-size: var(--sc-font-small);
+}
+
+.SC-CardGrid.is-offset-by-sidebar {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media screen and (min-width: 768px) {
+  .SC-CardGrid.is-offset-by-sidebar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media screen and (min-width: 992px) {
+  .SC-CardGrid.is-offset-by-sidebar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media screen and (min-width: 1440px) {
+  .SC-CardGrid.is-offset-by-sidebar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .sc-cart_dropdown {
@@ -513,6 +513,13 @@ h1 {
   border-top-width: 2px;
 }
 
+.SC-Traits_title h5 {
+  color: var(--sc-shade-darkest);
+  font-weight: var(--sc-font-bold);
+  text-transform: initial;
+  margin-bottom: var(--sc-spacing-tiny);
+}
+
 .sc-bg-primary {
   background-color: var(--sc-color-primary);
 }
@@ -635,6 +642,10 @@ h1 {
     padding-left: var(--sc-spacing-small);
     padding-right: var(--sc-spacing-small);
   }
+}
+
+.sc-ml-auto {
+  margin-left: auto;
 }
 
 .tns-controls button {
