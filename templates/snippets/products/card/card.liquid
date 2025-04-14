@@ -184,16 +184,18 @@
       {%- endif %}
       {%- comment %} Compare {% endcomment %}
       {%- if allow_comparisons and theme_variables["products.comparisons"] == true %}
-        {%- require "scripts/product-comparison.js" -%}
+        {%- if product.traits.size > 0 and product.can_add_to_cart? == true %}
+          {%- require "scripts/product-comparison.js" -%}
 
-        <div class="SC-ProductCard_compare sc-display-inline-block">
-          <label class="SC-Checkbox">
-            <input data-js-compare-add id="{{ product.id }}" class="SC-Checkbox_input" type="checkbox"/>
-            <div class="SC-Checkbox_label sc-font-small sc-font-bold">
-              {{ "products.compare.add_to_compare" | t }}
-            </div>
-          </label>
-        </div>
+          <div class="SC-ProductCard_compare sc-display-inline-block sc-ml-auto">
+            <label class="SC-Checkbox">
+              <input data-js-compare-add id="{{ product.id }}" class="SC-Checkbox_input" type="checkbox"/>
+              <div class="SC-Checkbox_label sc-font-small sc-font-bold">
+                {{ "products.compare.add_to_compare" | t }}
+              </div>
+            </label>
+          </div>
+        {% endif %}
       {%- endif %}
     </div>
   </div>
