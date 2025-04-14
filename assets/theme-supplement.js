@@ -1,30 +1,26 @@
-document.addEventListener("DOMContentLoaded", () => {
-  let e = (function () {
-      let t = { items: 1, responsive: { 768: { items: 3 }, 992: { items: 4 }, 1700: { items: 5 } }, gutter: 20, nav: !1, swipeAngle: !1, speed: 400 },
-        r = [];
-      return (
-        $(() => {
-          document.querySelectorAll("[data-featured-slider]") &&
-            [...document.querySelectorAll("[data-featured-slider]")].map((t) => {
-              e.init("[data-featured-slider=" + t.getAttribute("data-featured-slider") + "]");
-            });
-        }),
-        {
-          init(e, i) {
-            let s = tns({ ...t, ...i, container: e });
-            r.push(s);
-          },
-        }
-      );
-    })(),
-    t = document.querySelector("#sc-header"),
-    r = t.getBoundingClientRect().height / 2,
-    i = document.querySelector("nav.sc-header_inner"),
-    s = (e) => {
-      e.forEach((e) => {
-        e.target, e.isIntersecting ? i.classList.remove("sticky") : i.classList.add("sticky");
-      });
-    },
-    a = new IntersectionObserver(s, { root: null, threshold: 0.5, rootMargin: `${r}px` });
-  a.observe(t);
+document.addEventListener('DOMContentLoaded', function () {
+  // Sticky header
+  const headerEl = document.querySelector('[data-header]');
+  const headerHeight = headerEl.getBoundingClientRect().height;
+  const headerHeightCalc = headerHeight / 2;
+  const navEl = document.querySelector('[data-header-inner]');
+
+  const stickyNav = (entries) => {
+    entries.forEach(entry => {
+      const target = entry.target;
+      if(!entry.isIntersecting) {
+        navEl.classList.add('sticky');
+      } else {
+        navEl.classList.remove('sticky');
+      }
+    });
+  };
+
+  const headerObserver = new IntersectionObserver(stickyNav, {
+    root: null,
+    threshold: 0.5,
+    rootMargin: `${headerHeightCalc}px`,
+  });
+
+  headerObserver.observe(headerEl);
 });
