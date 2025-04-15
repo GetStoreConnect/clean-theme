@@ -17,9 +17,11 @@
           {%- endif %}
           {%- if current_article.publish_on != blank or current_article.author != blank %}
             <div class="SC-Article_data sc-display-inline-flex sc-gap sc-pos-relative sc-font-small">
-              <span class="sc-mb-base sc-shade-neutral">
-                {{ 'article.posted.by' | t }} {{ current_article.author }}
-              </span>
+              {%- if current_article.author != blank %}
+                <span class="sc-mb-base sc-shade-neutral">
+                  {{ 'article.posted.by' | t }} {{ current_article.author }}
+                </span>
+              {%- endif %}
               <span class="sc-mb-base sc-shade-neutral">
                 {{ current_article.publish_on | date: "%B %-d, %Y" }}
               </span>

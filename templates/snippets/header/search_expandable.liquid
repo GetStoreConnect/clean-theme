@@ -1,7 +1,14 @@
-<div class="SC-Menu_item sc-hide-up-to-large sc-search sc-pos-absolute sc-top-0" data-js-toggle-active-target="bar">
+<div class="sc-search sc-flex-col sc-justify-center" data-modal="sc-search-{{ current_store.code }}">
+  <div class="sc-pos-absolute sc-top-0 sc-right-0 sc-ps-spacious sc-pt">
+    <button class="sc-search_button" type="button" data-modal-trigger="sc-search-{{ current_store.code }}">{% render "shared/icons/close", style_class: "SC-Icon" %}</button>
+  </div>
+
   <form action="{{ current_store.search_path }}" accept-charset="UTF-8" method="get">
-    <div class="sc-flex sc-align-items-center">
-      <input type="search" name="q" id="q" data-search-input class="sc-search_input" autocomplete="off" placeholder="{{ "header.search.placeholder" | t }}" data-js-toggle-active-target="bar">
+    <div class="sc-container">
+      <div id="SC-GlobalSearch" class="SC-Field SC-Field-special SC-Field-global SC-Field-icon sc-m-none sc-mw-100">
+        <input type="search" name="q" id="q" data-search-input class="SC-Field_input SC-Field_input-expanded sc-one-whole " autocomplete="off" placeholder="{{ "header.search.placeholder" | t }}">
+        {%- render "shared/icons/search" %}
+      </div>
     </div>
   </form>
 </div>
