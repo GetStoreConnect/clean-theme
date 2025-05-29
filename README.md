@@ -23,14 +23,14 @@ If these templates are missing, you’ll need to add them manually.
 
 ### 2. Manually Add the Missing Templates
 
-- Navigate to the theme templates section.
-- Add the missing templates listed above to your `resources` directory.
+- Navigate to the theme templates section
+- Add the missing templates listed above to your `resources` directory
 
 ### 3. Unzip and Update Your Theme
 
-- Unzip your theme package.
-- Locate each of the required templates within the unzipped files.
-- Update the content of each template to match the new files accordingly.
+- Unzip your theme package
+- Locate each of the required templates within the unzipped files
+- Update the content of each template to match the new files accordingly
 
 ## Directory Structure
 
