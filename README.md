@@ -14,6 +14,7 @@ Please follow these steps to ensure your theme templates are correctly uploaded 
 ### 1. Verify Existing Templates
 
 Go to your theme’s `resources` directory and check if the following templates are already present:
+
 - `resources/dist/manifest.json`
 - `resources/dist/scripts/featured-slider-JG578YU.js`
 - `resources/dist/styles/tns-icon-TR56D3Z.css`
