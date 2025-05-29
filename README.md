@@ -4,16 +4,36 @@ This is a multi-purpose theme, ideal for cosmetic, clothing, or fashion industri
 
 <img width="1275" alt="clean_theme_image_text_overlay" src="https://github.com/GetStoreConnect/clean-theme/assets/77841884/87bb29b7-f936-4db4-b8c7-f06be5255dc5">
 
+## Configuration
+
+- Upload it via the theme importer
+- Preview your theme
+
+Please follow these steps to ensure your theme templates are correctly uploaded and updated:
+
+### 1. Verify Existing Templates
+
+Go to your theme’s `resources` directory and check if the following templates are already present:
+- `resources/dist/manifest.json`
+- `resources/dist/scripts/featured-slider-JG578YU.js`
+- `resources/dist/styles/tns-icon-TR56D3Z.css`
+
+If these templates are missing, you’ll need to add them manually.
+
+### 2. Manually Add the Missing Templates
+
+- Navigate to the theme templates section.
+- Add the missing templates listed above to your `resources` directory.
+
+### 3. Unzip and Update Your Theme
+
+- Unzip your theme package.
+- Locate each of the required templates within the unzipped files.
+- Update the content of each template to match the new files accordingly.
 
 ## Directory Structure
 
-This theme has a specific folder structure. Some folders may be empty, but they need to remain part of the theme structure as they are not overridden or used for new templates.
-
-Also, it has been developed using the [Base Theme](https://github.com/GetStoreConnect/base-theme) as a boilerplate. The Clean theme doesn't contain all the base theme structure, we only include those customised, modified and new templates, snippets, variables or translations. Feel free to create a brand new theme using the base theme.
-
-## Theme Installer
-
-The theme installer is in your Salesforce org, where you must upload this theme as a zip file. Before uploading, remove the .git directory and README.md file from this repo. The theme installer displays errors if it does not find the standard directory structure.
+We have developed this theme using the [Base Theme](https://github.com/GetStoreConnect/base-theme) as a boilerplate. The Clean theme doesn't contain all the base theme structure, we only include those customised, modified and new templates, snippets, variables or translations. Feel free to create a brand new theme using the base theme.
 
 ## New Templates
 
@@ -22,7 +42,6 @@ You can create new templates as long as they reside within the standard director
 ## Features
 
 <img width="1146" alt="featured_categories_slider" src="https://github.com/GetStoreConnect/clean-theme/assets/77841884/90d001bb-c475-49bd-b3a2-90671c1b8566">
-
 
 - New card carousels for featured categories, products, or filtered products
 - New content template that renders one category only. This is ideal if you want to showcase products that are part of a given category you want to promote. It also helps to keep your org organized systematically.
@@ -56,20 +75,6 @@ You can create new templates as long as they reside within the standard director
 ## How to Add Content Blocks to Picklist
 
 You can follow the instructions in this document to [add content blocks to the picklist](https://help.getstoreconnect.com/documentation/adding-templates-to-content-template-picklist.html).
-
-## Configuration
-
-- Ensure that your root directory does not contain any `.git` hidden folders or files
-- Follow the base theme folder directory even when the folder are empty
-- Make sure the root folder is named `theme`
-- Compress it to a zip file
-- Name your zip file `theme`
-- Upload it via the theme importer
-- Now, go to the theme template list and remove the `.liquid` on each template
-- Rename
-  - snippets/products/card/simple_card > snippets/products/simple_card
-  - snippets/products/card/card > snippets/products/card
-- Preview your theme
 
 ### Recommended Help Articles
 
