@@ -23,8 +23,12 @@
     {%- comment %} Cart total {% endcomment %}
     <div class="sc-cart_total sc-p-medium" data-cart-nav-summary>
       {%- render "shared/order_total", source: current_cart, compact: true %}
+      
+      {%- comment %} Checkout buttons and express {% endcomment %}
+      <div class="sc-cart_total_express sc-mt-small">
+        {% render "checkout/payment_information/show_wallets_only" %}
+      </div>
     </div>
-    {%- comment %} Checkout button {% endcomment %}
     <div class="sc-cart_actions sc-color-white">
       {%- render "shared/cart/view_cart_button", class: "sc-cart_button sc-bg-dark sc-one-half sc-color-white" %}
       {%- render "shared/cart/checkout_button", class: "sc-cart_button sc-bg-darkest sc-one-half sc-color-white" %}
