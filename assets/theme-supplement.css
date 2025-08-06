@@ -153,7 +153,7 @@ h1 {
   }
 }
 
-.sc-cart_dropdown {
+.sc-cart {
   color: initial;
   z-index: 6;
   height: 100%;
@@ -164,47 +164,42 @@ h1 {
   transition: all 0.3s ease;
   max-width: calc(100% - 20px);
 }
-
-.sc-cart_dropdown.is-active {
+.sc-cart.is-active {
   right: 0;
   transition: all 0.3s ease;
 }
-
+.sc-cart.is-active + .sc-cart_overlay {
+  position: fixed;
+}
 .sc-cart_header {
   display: flex;
   justify-content: space-between;
 }
-
+.sc-cart_header h3 {
+  font-weight: 300;
+}
 .sc-cart_header_section {
   width: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.sc-cart_header h3 {
-  font-weight: 300;
-}
-
 .sc-cart_item img {
   max-width: 70px;
 }
-
 .sc-cart_total {
-  position: absolute;
-  bottom: 60px;
+  position: relative;
   width: 100%;
   background-color: white;
 }
-
 .sc-cart_actions {
   display: flex;
   gap: 0;
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
+  margin-top: auto;
 }
-
 .sc-cart_button {
   display: inline-flex;
   justify-content: center;
@@ -214,9 +209,8 @@ h1 {
   letter-spacing: 0.2em;
   line-height: 60px;
   text-transform: uppercase;
-  transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
-
 .sc-cart_overlay {
   content: "";
   top: 0;
@@ -227,10 +221,6 @@ h1 {
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
   z-index: 5;
-}
-
-.sc-cart_dropdown.is-active + .sc-cart_overlay {
-  position: fixed;
 }
 
 .SC-Colour {
@@ -244,6 +234,13 @@ h1 {
 @media screen and (max-width: 992px) {
   .SC-Count {
     top: unset;
+  }
+}
+@media screen and (min-width: 992px) {
+  .SC-Count {
+    position: absolute;
+    right: -15px;
+    top: -5px;
   }
 }
 
@@ -312,7 +309,7 @@ h1 {
   padding-left: var(--sc-spacing-small);
   padding-right: var(--sc-spacing-small);
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .sc-header_inner {
     padding-left: var(--sc-spacing-large);
     padding-right: var(--sc-spacing-large);
@@ -332,7 +329,7 @@ h1 {
   backdrop-filter: blur(10px);
   animation: slideDown 0.35s ease-out;
 }
-.sc-header_inner.sticky .sc-cart_dropdown {
+.sc-header_inner.sticky .sc-cart {
   height: 100vh;
 }
 @media screen and (min-width: 992px) {
@@ -670,5 +667,3 @@ h1 {
     text-align: right;
   }
 }
-
-/*# sourceMappingURL=styles.css.map */
