@@ -30,6 +30,7 @@
     {%- comment -%} Scripts {%- endcomment -%}
     {% require "scripts/configure.js" %}
     {% require "scripts/theme.js" %}
+    {%- require "scripts/metadata.js" %}
     {% render "shared/category_grid_card.js" %}
     {{ theme_supplement_javascript }}
     {% if current_store.global_javascript != blank %}<script>{{ current_store.global_javascript }}</script>{% endif %}
