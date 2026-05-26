@@ -45,7 +45,7 @@
         <ul class="SC-Menu tier1 end sc-align-items-center sc-justify-end" id="SC-HeaderMenuSecondary" style="column-gap: var(--sc-spacing-large);">
           {%- render "header/dropdown/search_trigger" %}
           {%- render "header/dropdown/account" %}
-          {%- render "header/dropdown/cart" %}
+          {%- component "cart-menu", reload: "sc.cart-updated sc.voucher-applied sc.voucher-removed" %}
         </ul>
       </div>
     </nav>
