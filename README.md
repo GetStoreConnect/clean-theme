@@ -1,5 +1,7 @@
 # Clean Theme
 
+**Version: StoreConnect v21**
+
 This is a multi-purpose theme, ideal for cosmetic, clothing, or fashion industries.
 
 <img width="1275" alt="clean_theme_image_text_overlay" src="https://github.com/GetStoreConnect/clean-theme/assets/77841884/87bb29b7-f936-4db4-b8c7-f06be5255dc5">
