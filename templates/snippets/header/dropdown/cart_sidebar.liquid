@@ -29,7 +29,7 @@
       
         {% unless current_request.path == current_store.cart_path or current_request.path contains '/checkout' or current_product != blank %}
           <div class="sc-cart_total_express">
-            {% render "checkout/payment_information/show_wallets_only" %}
+            {% render "checkout/payment_information/show_wallets_only", skip_paypal_fastlane: true %}
           </div>
         {% endunless %}
       </div>
