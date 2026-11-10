@@ -29,7 +29,7 @@
       </div>
 
       <aside class="SC-Grid_summary">
-        {%- if current_cart.currency_payment_required? %}
+        {%- if current_cart.currency_payment_required? and current_cart.quotable? == false %}
           {% render "checkout/payment_information/show_wallets_only" %}
         {%- endif %}
       </aside>

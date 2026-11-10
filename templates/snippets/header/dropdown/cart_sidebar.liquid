@@ -27,9 +27,9 @@
       <div class="sc-cart_total sc-ps-medium sc-flex-col sc-gap-small" data-cart-nav-summary>
         {%- render "shared/order_total", source: current_cart, compact: true %}
       
-        {% unless current_request.path == current_store.cart_path or current_request.path contains '/checkout' or current_product != blank %}
+        {% unless current_request.path == current_store.cart_path or current_request.path contains '/checkout' or current_product != blank or current_cart.quotable? %}
           <div class="sc-cart_total_express">
-            {% render "checkout/payment_information/show_wallets_only" %}
+            {% render "checkout/payment_information/show_wallets_only", skip_paypal_fastlane: true %}
           </div>
         {% endunless %}
       </div>
